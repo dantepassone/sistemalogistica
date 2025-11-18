@@ -1,0 +1,86 @@
+<div class="plans-container">
+  <div class="header-section">
+    <h1>Planes y Configuración</h1>
+    <p>Elige el plan que mejor se adapte a las necesidades de tu empresa</p>
+  </div>
+
+  <div class="plans-grid">
+    <div class="plan-card" *ngFor="let plan of plans" [style.border-left-color]="plan.color">
+      <div class="plan-header">
+        <div class="plan-icon">{{ plan.icon }}</div>
+        <h2>{{ plan.name }}</h2>
+        <p class="plan-description">{{ plan.description }}</p>
+      </div>
+      <div class="plan-price">
+        <span class="price-label">Precio:</span>
+        <span class="price-value">{{ plan.price }}</span>
+      </div>
+      <div class="plan-features">
+        <h3>Características incluidas:</h3>
+        <ul>
+          <li *ngFor="let feature of plan.features">
+            <span class="check-icon">✓</span>
+            {{ feature }}
+          </li>
+        </ul>
+      </div>
+      <button class="btn-contact" [style.background]="plan.color">
+        Contactar para más información
+      </button>
+    </div>
+  </div>
+
+  <div class="comparison-section">
+    <h2>Comparación de Planes</h2>
+    <div class="comparison-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Característica</th>
+            <th>Plan PYME</th>
+            <th>Plan Corporativo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Usuarios</td>
+            <td>Hasta 5</td>
+            <td>Ilimitados</td>
+          </tr>
+          <tr>
+            <td>Sucursales</td>
+            <td>Hasta 3</td>
+            <td>Ilimitadas</td>
+          </tr>
+          <tr>
+            <td>Módulos</td>
+            <td>Básicos</td>
+            <td>Todos los módulos</td>
+          </tr>
+          <tr>
+            <td>Soporte</td>
+            <td>Email</td>
+            <td>24/7 Prioritario</td>
+          </tr>
+          <tr>
+            <td>API</td>
+            <td>No</td>
+            <td>Sí</td>
+          </tr>
+          <tr>
+            <td>Integraciones</td>
+            <td>Limitadas</td>
+            <td>Personalizadas</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="contact-section">
+    <h2>¿Necesitas más información?</h2>
+    <p>Contacta con nuestro equipo de ventas para conocer más detalles sobre nuestros planes y encontrar la solución perfecta para tu empresa.</p>
+    <button class="btn-primary">Solicitar una demo</button>
+  </div>
+</div>
+

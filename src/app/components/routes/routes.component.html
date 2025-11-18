@@ -1,0 +1,40 @@
+<div class="routes-container">
+  <div class="header-section">
+    <h1>Rutas y Distribución</h1>
+    <p>Gestiona las rutas asignadas y la distribución de envíos</p>
+  </div>
+
+  <div class="routes-grid">
+    <div class="route-card" *ngFor="let route of routes">
+      <div class="route-header">
+        <div class="route-icon">🗺️</div>
+        <h2>{{ route.ruta }}</h2>
+      </div>
+      <div class="route-content">
+        <div class="route-stat">
+          <span class="stat-label">Envíos asignados:</span>
+          <span class="stat-value">{{ route.cantidad }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <h3>Información sobre Rutas</h3>
+    <p>
+      Las rutas se asignan automáticamente según el destino de los envíos.
+      Cada ruta agrupa envíos que comparten una dirección geográfica similar,
+      optimizando los tiempos de entrega y reduciendo costos operativos.
+    </p>
+    <p>
+      <strong>Ruta Norte:</strong> Incluye destinos hacia el norte del país (Córdoba, Tucumán, Salta, etc.)
+    </p>
+    <p>
+      <strong>Ruta Sur:</strong> Incluye destinos hacia el sur (Rosario, Mar del Plata, Bahía Blanca, etc.)
+    </p>
+    <p>
+      <strong>Ruta CABA - GBA:</strong> Envíos dentro del área metropolitana de Buenos Aires
+    </p>
+  </div>
+</div>
+

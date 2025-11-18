@@ -1,0 +1,8 @@
+<div class="app-container">
+  <!-- Navbar solo se muestra si no estamos en login -->
+  <app-navbar *ngIf="isAuthenticated()"></app-navbar>
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+

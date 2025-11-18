@@ -1,0 +1,91 @@
+<div class="detail-container" *ngIf="shipment">
+  <div class="detail-header">
+    <button class="btn-back" (click)="goBack()">← Volver al listado</button>
+    <h1>Detalle del Envío</h1>
+    <p class="shipment-id">ID: {{ shipment.id }}</p>
+  </div>
+
+  <div class="detail-content">
+    <div class="detail-section">
+      <h2>Información del Envío</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Estado Actual:</label>
+          <span class="status-badge" [ngClass]="getStatusClass(shipment.estado)">
+            {{ shipment.estado }}
+          </span>
+        </div>
+        <div class="info-item">
+          <label>Remitente:</label>
+          <span>{{ shipment.remitente }}</span>
+        </div>
+        <div class="info-item">
+          <label>Destinatario:</label>
+          <span>{{ shipment.destinatario }}</span>
+        </div>
+        <div class="info-item">
+          <label>Origen:</label>
+          <span>{{ shipment.origen }}</span>
+        </div>
+        <div class="info-item">
+          <label>Destino:</label>
+          <span>{{ shipment.destino }}</span>
+        </div>
+        <div class="info-item">
+          <label>Ciudad:</label>
+          <span>{{ shipment.ciudad }}</span>
+        </div>
+        <div class="info-item">
+          <label>Provincia:</label>
+          <span>{{ shipment.provincia }}</span>
+        </div>
+        <div class="info-item">
+          <label>Dirección:</label>
+          <span>{{ shipment.direccion }}</span>
+        </div>
+        <div class="info-item">
+          <label>Ruta Asignada:</label>
+          <span>{{ shipment.rutaAsignada }}</span>
+        </div>
+        <div class="info-item">
+          <label>Fecha Estimada de Entrega:</label>
+          <span>{{ shipment.fechaEstimadaEntrega }}</span>
+        </div>
+        <div class="info-item" *ngIf="shipment.peso">
+          <label>Peso:</label>
+          <span>{{ shipment.peso }} kg</span>
+        </div>
+        <div class="info-item" *ngIf="shipment.dimensiones">
+          <label>Dimensiones:</label>
+          <span>{{ shipment.dimensiones }}</span>
+        </div>
+        <div class="info-item" *ngIf="shipment.valorDeclarado">
+          <label>Valor Declarado:</label>
+          <span>${{ shipment.valorDeclarado | number }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions-section">
+      <h2>Acciones</h2>
+      <p class="actions-description">Cambiar estado del envío:</p>
+      <div class="action-buttons">
+        <button 
+          *ngFor="let status of availableStatuses"
+          class="btn-action"
+          [class.disabled]="!canChangeToStatus(status)"
+          [disabled]="!canChangeToStatus(status)"
+          (click)="changeStatus(status)">
+          Cambiar a "{{ status }}"
+        </button>
+      </div>
+      <p class="note">* Solo se pueden cambiar a estados específicos</p>
+    </div>
+  </div>
+</div>
+
+<div class="not-found" *ngIf="!shipment">
+  <p>Envío no encontrado</p>
+  <button class="btn-back" (click)="goBack()">Volver al listado</button>
+</div>
+

@@ -1,0 +1,68 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>ByteCore</h1>
+    <p class="subtitle">Sistema de gestión logística y de paquetería</p>
+    <p class="description">
+      Plataforma integral para la gestión de envíos, rutas y distribución de paquetes
+      en empresas de transporte de Argentina.
+    </p>
+  </div>
+
+  <div class="statistics-grid">
+    <div class="stat-card total">
+      <div class="stat-icon">📦</div>
+      <div class="stat-content">
+        <h3>Total de Envíos</h3>
+        <p class="stat-number">{{ statistics.total }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card transit">
+      <div class="stat-icon">🚚</div>
+      <div class="stat-content">
+        <h3>En Tránsito</h3>
+        <p class="stat-number">{{ statistics.enTransito }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card delivered">
+      <div class="stat-icon">✅</div>
+      <div class="stat-content">
+        <h3>Entregados</h3>
+        <p class="stat-number">{{ statistics.entregado }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card return">
+      <div class="stat-icon">↩️</div>
+      <div class="stat-content">
+        <h3>Devoluciones / Reclamos</h3>
+        <p class="stat-number">{{ statistics.enDevolucion }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions-section">
+    <h2>Acciones Rápidas</h2>
+    <div class="actions-grid">
+      <button class="action-card" (click)="goToShipments()">
+        <div class="action-icon">📋</div>
+        <h3>Listado de Envíos</h3>
+        <p>Ver y gestionar todos los envíos</p>
+      </button>
+
+      <button class="action-card" (click)="goToRoutes()">
+        <div class="action-icon">🗺️</div>
+        <h3>Rutas y Distribución</h3>
+        <p>Gestionar rutas y asignaciones</p>
+      </button>
+
+      <button class="action-card" (click)="goToPlans()">
+        <div class="action-icon">⚙️</div>
+        <h3>Configuración / Planes</h3>
+        <p>Ver planes y características</p>
+      </button>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,77 @@
+<div class="shipments-list-container">
+  <div class="header-section">
+    <h1>Listado de Envíos</h1>
+    <p>Gestiona y consulta todos tus envíos</p>
+  </div>
+
+  <div class="filters-section">
+    <div class="filter-group">
+      <label for="status-filter">Filtrar por estado:</label>
+      <select 
+        id="status-filter" 
+        [(ngModel)]="selectedStatus" 
+        (change)="onStatusChange()"
+        class="filter-select">
+        <option *ngFor="let status of statuses" [value]="status">
+          {{ status }}
+        </option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="search-input">Buscar:</label>
+      <input 
+        type="text" 
+        id="search-input" 
+        [(ngModel)]="searchText" 
+        (input)="onSearchChange()"
+        placeholder="ID, remitente o destinatario..."
+        class="search-input">
+    </div>
+  </div>
+
+  <div class="results-info">
+    <p>Mostrando {{ filteredShipments.length }} de {{ shipments.length }} envíos</p>
+  </div>
+
+  <div class="table-container">
+    <table class="shipments-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Remitente</th>
+          <th>Destinatario</th>
+          <th>Origen</th>
+          <th>Destino</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let shipment of filteredShipments">
+          <td><strong>{{ shipment.id }}</strong></td>
+          <td>{{ shipment.remitente }}</td>
+          <td>{{ shipment.destinatario }}</td>
+          <td>{{ shipment.origen }}</td>
+          <td>{{ shipment.destino }}</td>
+          <td>
+            <span class="status-badge" [ngClass]="getStatusClass(shipment.estado)">
+              {{ shipment.estado }}
+            </span>
+          </td>
+          <td>
+            <a [routerLink]="['/envio', shipment.id]" class="btn-detail">
+              Ver detalle
+            </a>
+          </td>
+        </tr>
+        <tr *ngIf="filteredShipments.length === 0">
+          <td colspan="7" class="no-results">
+            No se encontraron envíos con los filtros aplicados
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

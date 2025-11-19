@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent {
   usuario: string = '';
-  contraseña: string = '';
+  contrasena: string = '';
   error: string = '';
 
   constructor(private router: Router) {}
@@ -26,7 +26,7 @@ export class LoginComponent {
    */
   ingresar(): void {
     // Validación simple: campos no vacíos
-    if (!this.usuario.trim() || !this.contraseña.trim()) {
+    if (!this.usuario.trim() || !this.contrasena.trim()) {
       this.error = 'Por favor, complete todos los campos';
       return;
     }

@@ -1,227 +1,336 @@
-# LogisPro por ByteCore - Sistema de Gestión Logística
+# 🚚 LogisPro por ByteCore
 
-Sistema de gestión logística y de paquetería para empresas de transporte de paquetes en Argentina. Demo web desarrollada con Angular por ByteCore.
+**Sistema de Gestión Logística y de Paquetería para Empresas de Transporte en Argentina**
+
+[![Angular](https://img.shields.io/badge/Angular-17-red.svg)](https://angular.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue.svg)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ## 📋 Descripción
 
-Esta es una aplicación demo que muestra cómo una empresa de logística puede:
-- Ver sus envíos (paquetes) en diferentes estados
-- Consultar detalles de un envío
-- Simular la gestión básica de rutas y devoluciones
-- Ver un pequeño resumen con estadísticas (totales por estado)
+LogisPro es una plataforma integral de gestión logística desarrollada por **ByteCore** que permite a las empresas de transporte gestionar eficientemente sus operaciones de paquetería. El sistema incluye 7 módulos principales que cubren todo el ciclo de vida de un envío, desde la recepción hasta la entrega final.
+
+### ✨ Características Principales
+
+- ✅ **7 Módulos Funcionales**: Recepción, Depósito, Envíos, Rutas, Flota, Reclamos y Reportes
+- ✅ **Trazabilidad Completa**: Código único de seguimiento para cada paquete
+- ✅ **Historial Automático**: Registro completo de todos los eventos del envío
+- ✅ **Optimización de Rutas**: Sistema de planificación y optimización de entregas
+- ✅ **Gestión de Flota**: Control de vehículos y asignación de recursos
+- ✅ **Reportes en Tiempo Real**: Estadísticas y analítica del sistema
+- ✅ **Interfaz Intuitiva**: Diseño moderno y responsive
+- ✅ **Guía Integrada**: Tutorial interactivo para nuevos usuarios
+
+## 🎯 Módulos del Sistema
+
+### 1. 📥 Módulo de Recepción y Registro
+- Registro de nuevos paquetes con datos completos
+- Generación automática de código único de trazabilidad
+- Validación de datos y cálculo automático de volumen
+- Asignación automática de ruta según destino
+
+### 2. 🏭 Módulo de Depósito / Centro de Distribución
+- Visualización de paquetes por zonas (Recepción, Almacenamiento, Clasificación, Despacho)
+- Movimiento de paquetes entre zonas
+- Control de capacidad y ocupación del depósito
+- Seguimiento de ubicación física de cada paquete
+
+### 3. 📋 Módulo de Envíos y Seguimiento
+- Listado completo de envíos con filtros avanzados
+- Búsqueda por código de trazabilidad, ID, remitente, destinatario, destino
+- Vista detallada con historial completo de tracking
+- Cambio de estados con registro automático en historial
+- Timeline visual del recorrido del paquete
+
+### 4. 🗺️ Módulo de Planificación y Optimización de Rutas
+- Visualización de rutas asignadas (Norte, Sur, CABA-GBA)
+- Optimización automática de rutas con cálculo de distancia, tiempo y costo
+- Asignación de envíos a rutas
+- Detalles de envíos por ruta
+
+### 5. 🚛 Módulo de Flota y Recursos
+- Gestión de vehículos disponibles
+- Asignación de envíos a vehículos
+- Control de estados (Disponible, En ruta, En mantenimiento)
+- Información de choferes y capacidad
+- Seguimiento de mantenimiento
+
+### 6. ⚠️ Módulo de Reclamos y Devoluciones
+- Registro de nuevos reclamos y devoluciones
+- Seguimiento de casos con estados (Abierto, En investigación, Resuelto, Cerrado)
+- Gestión de prioridades
+- Vinculación con envíos
+
+### 7. 📊 Módulo de Reportes y Analítica
+- Estadísticas en tiempo real
+- Tiempo promedio de entrega calculado automáticamente
+- Tasa de éxito de entregas
+- Costos de distribución
+- Indicadores operativos (KPIs)
 
 ## 🛠️ Tecnologías Usadas
 
-- **Angular 17** - Framework principal
-- **TypeScript** - Lenguaje de programación
-- **HTML5 / CSS3** - Estructura y estilos
-- **RxJS** - Programación reactiva
+- **Angular 17** - Framework principal con componentes standalone
+- **TypeScript 5.2** - Lenguaje de programación
+- **RxJS** - Programación reactiva (Observables, BehaviorSubject)
 - **Angular Router** - Navegación entre componentes
+- **HTML5 / CSS3** - Estructura y estilos responsive
+- **GitHub Pages** - Hosting estático
 
-## 🚀 Cómo Ejecutar el Proyecto
+## 🚀 Inicio Rápido
 
 ### Requisitos Previos
 
-- Node.js (versión 18 o superior)
-- npm (viene incluido con Node.js)
+- **Node.js** 18 o superior
+- **npm** (incluido con Node.js)
 
 ### Instalación
 
-1. Clona el repositorio o descarga el proyecto
-2. Abre una terminal en la carpeta del proyecto
-3. Instala las dependencias:
+1. **Clonar el repositorio**
+   ```bash
+   git clone https://github.com/tu-usuario/sistemalogistica.git
+   cd sistemalogistica
+   ```
 
-```bash
-npm install
-```
+2. **Instalar dependencias**
+   ```bash
+   npm install
+   ```
 
-### Desarrollo
+3. **Ejecutar en desarrollo**
+   ```bash
+   npm start
+   ```
+   La aplicación estará disponible en `http://localhost:4200`
 
-Para ejecutar el proyecto en modo desarrollo:
+### Scripts Disponibles
 
-```bash
-npm start
-```
+| Comando | Descripción |
+|---------|-------------|
+| `npm start` | Inicia el servidor de desarrollo en `http://localhost:4200` |
+| `npm run build` | Compila para producción (sin base-href) |
+| `npm run build:prod` | Compila para producción con base-href para GitHub Pages |
+| `npm test` | Ejecuta las pruebas unitarias |
 
-O alternativamente:
+## 🌐 Despliegue en GitHub Pages
 
-```bash
-ng serve
-```
+### Opción 1: Deploy Automático con GitHub Actions (Recomendado) ✅
 
-La aplicación estará disponible en `http://localhost:4200`
+El proyecto incluye un workflow de GitHub Actions que despliega automáticamente en cada push a `main` o `master`.
 
-El servidor de desarrollo se recargará automáticamente cuando cambies algún archivo.
+**Pasos:**
 
-## 📦 Compilar para Producción
+1. **Ajustar el base-href** en `package.json`:
+   ```json
+   "build:prod": "ng build --configuration production --base-href /NOMBRE-DE-TU-REPO/"
+   ```
+   Reemplaza `NOMBRE-DE-TU-REPO` con el nombre de tu repositorio en GitHub.
 
-Para compilar el proyecto para producción:
+2. **Habilitar GitHub Pages** en tu repositorio:
+   - Ve a **Settings** → **Pages**
+   - En **Source**, selecciona **GitHub Actions**
 
-```bash
-npm run build
-```
+3. **Hacer commit y push**:
+   ```bash
+   git add .
+   git commit -m "Configurar GitHub Pages"
+   git push origin main
+   ```
 
-O:
-
-```bash
-ng build --configuration production
-```
-
-Los archivos compilados se generarán en la carpeta `dist/sistema-logistica/`
-
-### Compilar para GitHub Pages
-
-Si vas a publicar en GitHub Pages, usa el siguiente comando que incluye el `base-href` correcto:
-
-```bash
-npm run build:prod
-```
-
-Este comando compila con `--base-href /sistemalogistica/` (ajusta el nombre según tu repositorio).
-
-## 🌐 Publicar en GitHub Pages
-
-### Opción 1: Usando GitHub Actions (Recomendado)
-
-1. Crea un archivo `.github/workflows/deploy.yml`:
-
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      
-      - name: Install dependencies
-        run: npm install
-      
-      - name: Build
-        run: npm run build:prod
-      
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/sistema-logistica
-```
-
-2. Ajusta el `base-href` en `package.json` según el nombre de tu repositorio
-3. Haz commit y push. GitHub Actions se encargará del deploy automáticamente
+4. **Verificar el deploy**:
+   - Ve a la pestaña **Actions** en GitHub
+   - Espera a que el workflow termine
+   - Tu sitio estará disponible en: `https://tu-usuario.github.io/sistemalogistica/`
 
 ### Opción 2: Deploy Manual
 
-1. Compila el proyecto con `npm run build:prod`
-2. Instala `gh-pages` globalmente: `npm install -g gh-pages`
-3. Publica la carpeta `dist/sistema-logistica`:
+1. **Compilar el proyecto**:
+   ```bash
+   npm run build:prod
+   ```
 
-```bash
-gh-pages -d dist/sistema-logistica
-```
+2. **Instalar gh-pages** (si no lo tienes):
+   ```bash
+   npm install -g gh-pages
+   ```
 
-### Opción 3: Usando el branch gh-pages
+3. **Publicar**:
+   ```bash
+   gh-pages -d dist/sistema-logistica
+   ```
 
-1. Compila el proyecto: `npm run build:prod`
-2. Copia el contenido de `dist/sistema-logistica` a un branch `gh-pages`
-3. Configura GitHub Pages para usar el branch `gh-pages` como fuente
+### ⚠️ Importante: Configurar Base-Href
 
-**Importante:** Asegúrate de ajustar el `base-href` en `package.json` según el nombre de tu repositorio en GitHub.
+Antes de desplegar, asegúrate de que el `base-href` en `package.json` coincida con el nombre de tu repositorio:
+
+- Si tu repo es `sistemalogistica` → `--base-href /sistemalogistica/`
+- Si tu repo es `logispro` → `--base-href /logispro/`
+- Si es la raíz del usuario → `--base-href /`
 
 ## 📁 Estructura del Proyecto
 
 ```
-src/
-├── app/
-│   ├── components/
-│   │   ├── dashboard/          # Dashboard principal
-│   │   ├── login/              # Pantalla de login
-│   │   ├── navbar/             # Barra de navegación
-│   │   ├── shipments-list/     # Listado de envíos
-│   │   ├── shipment-detail/    # Detalle de envío
-│   │   ├── routes/             # Rutas y distribución
-│   │   └── plans/              # Planes y configuración
-│   ├── models/
-│   │   └── shipment.model.ts   # Modelo de datos de envío
-│   ├── services/
-│   │   └── shipments.service.ts # Servicio con datos mock
-│   ├── app.component.ts        # Componente raíz
-│   ├── app.routes.ts           # Configuración de rutas
-│   └── ...
-├── index.html
-├── main.ts
-└── styles.css                   # Estilos globales
+sistemalogistica/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml          # Workflow de GitHub Actions
+├── src/
+│   ├── app/
+│   │   ├── components/         # Componentes de la aplicación
+│   │   │   ├── dashboard/      # Dashboard principal
+│   │   │   ├── login/          # Pantalla de login
+│   │   │   ├── guide/          # Guía de uso del sistema
+│   │   │   ├── reception/      # Recepción de paquetes
+│   │   │   ├── warehouse/     # Depósito y distribución
+│   │   │   ├── shipments-list/ # Listado de envíos
+│   │   │   ├── shipment-detail/# Detalle de envío
+│   │   │   ├── routes/         # Rutas y optimización
+│   │   │   ├── fleet/          # Gestión de flota
+│   │   │   ├── claims/         # Reclamos y devoluciones
+│   │   │   ├── reports/        # Reportes y analítica
+│   │   │   └── ...
+│   │   ├── models/             # Modelos de datos
+│   │   │   ├── shipment.model.ts
+│   │   │   ├── vehicle.model.ts
+│   │   │   ├── claim.model.ts
+│   │   │   └── ...
+│   │   ├── services/            # Servicios
+│   │   │   ├── shipments.service.ts
+│   │   │   └── reception.service.ts
+│   │   ├── guards/             # Guards de autenticación
+│   │   ├── app.routes.ts       # Configuración de rutas
+│   │   └── app.component.ts    # Componente raíz
+│   ├── index.html
+│   ├── main.ts
+│   └── styles.css
+├── angular.json
+├── package.json
+└── README.md
 ```
 
-## 🎯 Funcionalidades
+## 🎮 Cómo Usar el Sistema
 
-### 1. Login Simulado
-- Formulario de login con validación básica
-- No requiere autenticación real
-- Redirige al dashboard al completar
+### Primer Acceso
 
-### 2. Dashboard
-- Estadísticas en tiempo real:
-  - Total de envíos
-  - Envíos en tránsito
-  - Envíos entregados
-  - Devoluciones y reclamos
-- Accesos rápidos a las diferentes secciones
+1. **Login**: Ingresa cualquier usuario y contraseña (sistema simulado)
+2. **Guía**: Si es tu primera vez, verás una guía interactiva
+3. **Dashboard**: Accede al dashboard principal con estadísticas
 
-### 3. Listado de Envíos
-- Tabla con todos los envíos
+### Flujo de Trabajo Típico
+
+1. **📥 Recepción**: Registra un nuevo paquete
+   - Completa el formulario con datos del remitente y destinatario
+   - El sistema genera automáticamente un código de trazabilidad único
+   - El paquete queda en estado "Recepcionado"
+
+2. **🏭 Depósito**: Mueve el paquete entre zonas
+   - Recepción → En depósito → Clasificado → Despacho
+   - Cada movimiento se registra en el historial
+
+3. **🚛 Flota**: Asigna un vehículo
+   - Selecciona un vehículo disponible
+   - Asigna el envío al vehículo
+   - El estado cambia automáticamente a "En tránsito"
+
+4. **📋 Envíos**: Realiza seguimiento
+   - Busca por código de trazabilidad
+   - Visualiza el historial completo
+   - Cambia estados según avance
+
+5. **✅ Entrega**: Marca como entregado
+   - Al cambiar a "Entregado", se guarda la fecha automáticamente
+   - El historial se actualiza
+
+## 🔍 Funcionalidades Detalladas
+
+### Búsqueda Avanzada
+- Por código de trazabilidad
+- Por ID de envío
+- Por remitente o destinatario
+- Por destino o ciudad
 - Filtros por estado
-- Búsqueda por ID, remitente o destinatario
-- Acceso al detalle de cada envío
 
-### 4. Detalle de Envío
-- Información completa del envío
-- Cambio de estado (En tránsito, Entregado, En devolución)
-- Actualización en tiempo real
+### Historial de Tracking
+- Registro automático de todos los eventos
+- Fecha, hora y usuario de cada cambio
+- Descripción contextual de cada evento
+- Timeline visual en el detalle del envío
 
-### 5. Rutas y Distribución
-- Visualización de rutas asignadas
-- Cantidad de envíos por ruta
-- Información sobre el sistema de rutas
-
-### 6. Planes
-- Información sobre Plan PYME
-- Información sobre Plan Corporativo
-- Comparación de características
+### Optimización de Rutas
+- Cálculo de distancia estimada
+- Tiempo estimado de entrega
+- Costo estimado de la ruta
+- Agrupación por zona geográfica
 
 ## 📝 Notas Importantes
 
-- **Sin Backend**: Todos los datos son mockeados en memoria usando el servicio `ShipmentsService`
+- **Sin Backend**: Todos los datos son mockeados en memoria
 - **Sin Base de Datos**: Los cambios se mantienen solo durante la sesión del navegador
-- **Componentes Standalone**: El proyecto usa componentes standalone de Angular para simplificar la estructura
-- **Responsive**: La aplicación es responsive y se adapta a diferentes tamaños de pantalla
+- **Componentes Standalone**: Arquitectura moderna de Angular 17
+- **Responsive**: Funciona en desktop, tablet y móvil
+- **SPA**: Single Page Application sin dependencias de servidor
 
-## 🔧 Scripts Disponibles
+## 🐛 Solución de Problemas
 
-- `npm start` - Inicia el servidor de desarrollo
-- `npm run build` - Compila para producción
-- `npm run build:prod` - Compila para producción con base-href para GitHub Pages
+### Error: "Cannot GET /"
+- Asegúrate de que el servidor esté corriendo con `npm start`
+- Verifica que estés accediendo a `http://localhost:4200`
+
+### Error en GitHub Pages: Página en blanco
+- Verifica que el `base-href` en `package.json` coincida con el nombre de tu repo
+- Asegúrate de que el workflow de GitHub Actions haya terminado exitosamente
+
+### Error: "npm no reconocido"
+- Instala Node.js desde [nodejs.org](https://nodejs.org/)
+- Reinicia la terminal después de instalar
+
+## 📚 Documentación Adicional
+
+- [Guía de Uso del Sistema](src/app/components/guide/) - Guía interactiva integrada
+- [Mejoras Implementadas](MEJORAS_IMPLEMENTADAS.md) - Lista de mejoras realizadas
+- [Evaluación del Sistema](EVALUACIÓN_Y_MEJORAS.md) - Análisis del sistema
+
+## 🤝 Contribuir
+
+Este es un proyecto demo desarrollado por ByteCore. Para contribuir:
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
 ## 📄 Licencia
 
-Este proyecto es una demo desarrollada por ByteCore.
+Este proyecto es una demo desarrollada por **ByteCore**.
 
 ## 👥 Desarrollo
 
-Desarrollado por **ByteCore** - Sistema de gestión logística y de paquetería
+**Desarrollado por ByteCore**  
+Sistema de gestión logística y de paquetería para empresas de transporte en Argentina.
 
 ---
 
-Para más información o consultas, contacta al equipo de desarrollo.
+## 🔗 Enlaces Útiles
 
+- [Angular Documentation](https://angular.io/docs)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+- [GitHub Pages Documentation](https://docs.github.com/en/pages)
+
+## 📚 Documentación Adicional
+
+- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Guía completa de despliegue en GitHub Pages
+- **[DOCUMENTACION_TECNICA.md](DOCUMENTACION_TECNICA.md)** - Documentación técnica detallada
+- **[GUIA_RAPIDA.md](GUIA_RAPIDA.md)** - Guía rápida de inicio
+- **[CHANGELOG.md](CHANGELOG.md)** - Historial de cambios
+
+## 🎯 Estado del Proyecto
+
+✅ **Sistema Funcional** - Todos los módulos operativos  
+✅ **Listo para GitHub Pages** - Configuración completa  
+✅ **Documentación Completa** - Guías y documentación técnica  
+✅ **Responsive** - Funciona en todos los dispositivos  
+
+---
+
+**¿Necesitas ayuda?** Revisa la guía integrada en el sistema o consulta la documentación técnica.

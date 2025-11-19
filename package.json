@@ -7,6 +7,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --configuration production --base-href /sistemalogistica/",
+    "deploy": "npm run build:prod && npx gh-pages -d dist/sistema-logistica",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

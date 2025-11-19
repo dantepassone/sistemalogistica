@@ -1,0 +1,88 @@
+# ⚡ Guía Rápida - LogisPro
+
+## 🚀 Inicio Rápido (3 pasos)
+
+1. **Instalar dependencias**
+   ```bash
+   npm install
+   ```
+
+2. **Ejecutar en desarrollo**
+   ```bash
+   npm start
+   ```
+
+3. **Abrir en navegador**
+   ```
+   http://localhost:4200
+   ```
+
+## 📦 Compilar para Producción
+
+```bash
+npm run build:prod
+```
+
+Los archivos estarán en `dist/sistema-logistica/`
+
+## 🌐 Desplegar en GitHub Pages
+
+### Opción Automática (Recomendada)
+
+1. **Ajusta el base-href** en `package.json`:
+   - Cambia `/sistemalogistica/` por el nombre de tu repo
+
+2. **Habilita GitHub Pages**:
+   - Settings → Pages → Source: **GitHub Actions**
+
+3. **Push a main**:
+   ```bash
+   git push origin main
+   ```
+
+4. **Espera** a que el workflow termine en la pestaña **Actions**
+
+5. **Accede** a: `https://tu-usuario.github.io/sistemalogistica/`
+
+### Opción Manual
+
+```bash
+npm run deploy
+```
+
+## 🔑 Login
+
+- **Usuario**: Cualquier texto
+- **Contraseña**: Cualquier texto
+- El sistema es simulado, no requiere autenticación real
+
+## 📚 Documentación Completa
+
+- [README.md](README.md) - Documentación principal
+- [DEPLOYMENT.md](DEPLOYMENT.md) - Guía de despliegue detallada
+- [DOCUMENTACION_TECNICA.md](DOCUMENTACION_TECNICA.md) - Documentación técnica
+
+## ⚙️ Scripts Disponibles
+
+| Comando | Descripción |
+|---------|-------------|
+| `npm start` | Servidor de desarrollo |
+| `npm run build` | Build de producción |
+| `npm run build:prod` | Build para GitHub Pages |
+| `npm run deploy` | Build + Deploy manual |
+
+## 🆘 Problemas Comunes
+
+**Error: npm no reconocido**
+→ Instala Node.js desde [nodejs.org](https://nodejs.org/)
+
+**Página en blanco en GitHub Pages**
+→ Verifica que el `base-href` coincida con el nombre de tu repo
+
+**Error 404 en rutas**
+→ Asegúrate de usar GitHub Actions como fuente en Pages
+
+---
+
+**¿Listo?** ¡Empieza a usar LogisPro! 🎉
+

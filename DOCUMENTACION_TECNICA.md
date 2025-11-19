@@ -1,5 +1,9 @@
 # 📚 Documentación Técnica - LogisPro
 
+## 🌐 Demo en Vivo
+
+**Sistema funcionando:** [https://dantepassone.github.io/sistemalogistica/](https://dantepassone.github.io/sistemalogistica/)
+
 ## 🏗️ Arquitectura del Sistema
 
 ### Estructura de Componentes

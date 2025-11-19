@@ -2,6 +2,10 @@
 
 Todos los cambios notables de este proyecto serán documentados en este archivo.
 
+## 🌐 Demo en Vivo
+
+**Sistema desplegado:** [https://dantepassone.github.io/sistemalogistica/](https://dantepassone.github.io/sistemalogistica/)
+
 ## [1.0.0] - 2024-01-XX
 
 ### ✨ Agregado

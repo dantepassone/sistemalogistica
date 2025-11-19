@@ -4,6 +4,12 @@
 
 El proyecto está completamente configurado para GitHub Pages.
 
+## 🌐 Demo en Vivo
+
+**Sistema funcionando:** [https://dantepassone.github.io/sistemalogistica/](https://dantepassone.github.io/sistemalogistica/)
+
+Puedes probar todas las funcionalidades ahora mismo.
+
 ## ✅ Lo que está configurado:
 
 ### 1. **Workflow de GitHub Actions** ✅
@@ -51,13 +57,15 @@ Si tu repositorio se llama diferente (ej: `logispro`):
 3. En **Source**, selecciona **"GitHub Actions"**
 4. Guarda
 
-### Paso 3: Hacer Push
+### Paso 3: Hacer Push (Sin Compilar)
 
 ```bash
 git add .
-git commit -m "Configurar GitHub Pages"
+git commit -m "Deploy a GitHub Pages"
 git push origin main
 ```
+
+**Nota**: No necesitas compilar manualmente. GitHub Actions compilará automáticamente cuando hagas push.
 
 ### Paso 4: Verificar
 

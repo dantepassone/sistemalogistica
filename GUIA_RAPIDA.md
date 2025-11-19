@@ -1,5 +1,11 @@
 # ⚡ Guía Rápida - LogisPro
 
+## 🌐 Probar Sin Instalar
+
+**Demo en vivo:** [https://dantepassone.github.io/sistemalogistica/](https://dantepassone.github.io/sistemalogistica/)
+
+Puedes probar el sistema completo sin instalar nada. Solo ingresa cualquier usuario y contraseña.
+
 ## 🚀 Inicio Rápido (3 pasos)
 
 1. **Instalar dependencias**
@@ -27,22 +33,31 @@ Los archivos estarán en `dist/sistema-logistica/`
 
 ## 🌐 Desplegar en GitHub Pages
 
-### Opción Automática (Recomendada)
+### ⚡ Proceso Rápido (Sin Compilar Manualmente)
 
-1. **Ajusta el base-href** en `package.json`:
+1. **Ajusta el base-href** en `package.json` línea 9:
    - Cambia `/sistemalogistica/` por el nombre de tu repo
 
 2. **Habilita GitHub Pages**:
    - Settings → Pages → Source: **GitHub Actions**
 
-3. **Push a main**:
+3. **Push a main** (GitHub compilará automáticamente):
    ```bash
+   git add .
+   git commit -m "Deploy"
    git push origin main
    ```
 
-4. **Espera** a que el workflow termine en la pestaña **Actions**
+4. **Espera** a que el workflow termine en la pestaña **Actions** (2-3 minutos)
 
 5. **Accede** a: `https://tu-usuario.github.io/sistemalogistica/`
+
+### 💡 ¿Compilar Antes?
+
+**No es necesario**, pero puedes hacerlo para verificar:
+```bash
+npm run build:prod  # Verifica que compila sin errores
+```
 
 ### Opción Manual
 

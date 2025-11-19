@@ -1,6 +1,7 @@
 name: Deploy to GitHub Pages
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -17,6 +18,9 @@ concurrency:
 
 jobs:
   build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,6 +37,16 @@ jobs:
       
       - name: Build
         run: npm run build:prod
+      
+      - name: Verify build output
+        run: |
+          if [ ! -d "./dist/sistema-logistica" ]; then
+            echo "Error: Build output directory not found"
+            ls -la dist/
+            exit 1
+          fi
+          echo "Build output verified:"
+          ls -la dist/sistema-logistica/ | head -20
       
       - name: Setup Pages
         uses: actions/configure-pages@v4

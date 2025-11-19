@@ -5,6 +5,16 @@
 [![Angular](https://img.shields.io/badge/Angular-17-red.svg)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue.svg)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Online-brightgreen.svg)](https://dantepassone.github.io/sistemalogistica/)
+
+## 🌐 Demo en Vivo
+
+**Prueba el sistema ahora mismo:** [https://dantepassone.github.io/sistemalogistica/](https://dantepassone.github.io/sistemalogistica/)
+
+- ✅ **Login**: Usa cualquier usuario y contraseña (sistema simulado)
+- ✅ **Todos los módulos funcionales**
+- ✅ **Datos de ejemplo incluidos**
+- ✅ **Responsive**: Funciona en móvil, tablet y desktop
 
 ## 📋 Descripción
 
@@ -79,7 +89,13 @@ LogisPro es una plataforma integral de gestión logística desarrollada por **By
 
 ## 🚀 Inicio Rápido
 
-### Requisitos Previos
+### 🌐 Probar el Sistema (Sin Instalar)
+
+**Demo en vivo disponible:** [https://dantepassone.github.io/sistemalogistica/](https://dantepassone.github.io/sistemalogistica/)
+
+Puedes probar todas las funcionalidades sin instalar nada. Solo ingresa cualquier usuario y contraseña en el login.
+
+### Requisitos Previos (Para Desarrollo Local)
 
 - **Node.js** 18 o superior
 - **npm** (incluido con Node.js)
@@ -327,6 +343,7 @@ Sistema de gestión logística y de paquetería para empresas de transporte en A
 ## 🎯 Estado del Proyecto
 
 ✅ **Sistema Funcional** - Todos los módulos operativos  
+✅ **Demo en Vivo** - Disponible en [https://dantepassone.github.io/sistemalogistica/](https://dantepassone.github.io/sistemalogistica/)  
 ✅ **Listo para GitHub Pages** - Configuración completa  
 ✅ **Documentación Completa** - Guías y documentación técnica  
 ✅ **Responsive** - Funciona en todos los dispositivos  

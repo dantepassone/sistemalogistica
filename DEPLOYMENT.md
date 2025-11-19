@@ -2,6 +2,12 @@
 
 Esta guía te ayudará a desplegar LogisPro en GitHub Pages paso a paso.
 
+## 🌐 Demo en Vivo
+
+**Sistema desplegado y funcionando:** [https://dantepassone.github.io/sistemalogistica/](https://dantepassone.github.io/sistemalogistica/)
+
+Puedes probar el sistema completo sin instalar nada.
+
 ## 📋 Requisitos Previos
 
 - Cuenta de GitHub
@@ -38,7 +44,14 @@ El archivo `.github/workflows/deploy.yml` ya está configurado. Solo necesitas:
 
 ## 📤 Pasos para Desplegar
 
+### ⚠️ IMPORTANTE: Antes de Desplegar
+
+1. **Ajustar Base-Href** en `package.json` línea 9
+2. **Habilitar GitHub Pages** en Settings
+
 ### Método 1: Deploy Automático (Recomendado) ✅
+
+**No necesitas compilar manualmente** - GitHub Actions lo hace automáticamente.
 
 1. **Habilitar GitHub Pages**:
    - Ve a tu repositorio en GitHub
@@ -46,12 +59,14 @@ El archivo `.github/workflows/deploy.yml` ya está configurado. Solo necesitas:
    - En "Source", selecciona **"GitHub Actions"**
    - Guarda los cambios
 
-2. **Hacer commit y push**:
+2. **Hacer commit y push** (sin compilar):
    ```bash
    git add .
-   git commit -m "Configurar GitHub Pages"
+   git commit -m "Deploy a GitHub Pages"
    git push origin main
    ```
+   
+   **Nota**: El workflow compilará automáticamente en GitHub.
 
 3. **Verificar el deploy**:
    - Ve a la pestaña **Actions** en GitHub

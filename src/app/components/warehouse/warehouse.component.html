@@ -30,8 +30,18 @@
         <p>Paquetes recién recibidos esperando clasificación</p>
         <div class="shipments-list">
           <div *ngFor="let shipment of zonas.recepcion.slice(0, 5)" class="shipment-item">
-            <span class="shipment-id">{{ shipment.id }}</span>
-            <span class="shipment-dest">{{ shipment.destino }}</span>
+            <div class="shipment-info">
+              <span class="shipment-id">{{ shipment.codigoTrazabilidad }}</span>
+              <span class="shipment-dest">{{ shipment.destino }}</span>
+            </div>
+            <div class="shipment-actions">
+              <button class="btn-small btn-primary" (click)="verDetalle(shipment)">Ver</button>
+              <button *ngIf="puedeMover(shipment.estado)" 
+                      class="btn-small btn-action" 
+                      (click)="moverPaquete(shipment, getSiguienteEstado(shipment.estado)!)">
+                → En depósito
+              </button>
+            </div>
           </div>
           <p *ngIf="zonas.recepcion.length === 0" class="empty-zone">No hay paquetes en recepción</p>
           <p *ngIf="zonas.recepcion.length > 5" class="more-items">+{{ zonas.recepcion.length - 5 }} más</p>
@@ -48,8 +58,18 @@
         <p>Paquetes almacenados esperando asignación a ruta</p>
         <div class="shipments-list">
           <div *ngFor="let shipment of zonas.almacenamiento.slice(0, 5)" class="shipment-item">
-            <span class="shipment-id">{{ shipment.id }}</span>
-            <span class="shipment-dest">{{ shipment.destino }}</span>
+            <div class="shipment-info">
+              <span class="shipment-id">{{ shipment.codigoTrazabilidad }}</span>
+              <span class="shipment-dest">{{ shipment.destino }}</span>
+            </div>
+            <div class="shipment-actions">
+              <button class="btn-small btn-primary" (click)="verDetalle(shipment)">Ver</button>
+              <button *ngIf="puedeMover(shipment.estado)" 
+                      class="btn-small btn-action" 
+                      (click)="moverPaquete(shipment, getSiguienteEstado(shipment.estado)!)">
+                → Clasificar
+              </button>
+            </div>
           </div>
           <p *ngIf="zonas.almacenamiento.length === 0" class="empty-zone">No hay paquetes almacenados</p>
           <p *ngIf="zonas.almacenamiento.length > 5" class="more-items">+{{ zonas.almacenamiento.length - 5 }} más</p>
@@ -66,8 +86,18 @@
         <p>Paquetes siendo clasificados por destino</p>
         <div class="shipments-list">
           <div *ngFor="let shipment of zonas.clasificacion.slice(0, 5)" class="shipment-item">
-            <span class="shipment-id">{{ shipment.id }}</span>
-            <span class="shipment-dest">{{ shipment.destino }}</span>
+            <div class="shipment-info">
+              <span class="shipment-id">{{ shipment.codigoTrazabilidad }}</span>
+              <span class="shipment-dest">{{ shipment.destino }}</span>
+            </div>
+            <div class="shipment-actions">
+              <button class="btn-small btn-primary" (click)="verDetalle(shipment)">Ver</button>
+              <button *ngIf="puedeMover(shipment.estado)" 
+                      class="btn-small btn-action" 
+                      (click)="moverPaquete(shipment, getSiguienteEstado(shipment.estado)!)">
+                → Despachar
+              </button>
+            </div>
           </div>
           <p *ngIf="zonas.clasificacion.length === 0" class="empty-zone">No hay paquetes en clasificación</p>
           <p *ngIf="zonas.clasificacion.length > 5" class="more-items">+{{ zonas.clasificacion.length - 5 }} más</p>

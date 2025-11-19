@@ -303,6 +303,31 @@ export class ShipmentsService {
   }
 
   /**
+   * Obtiene todos los envíos de forma síncrona (para filtros)
+   */
+  getAllShipmentsSync(): Shipment[] {
+    return [...this.shipments];
+  }
+
+  /**
+   * Filtra envíos por estado
+   */
+  filterByStatus(status: ShipmentStatus): Shipment[] {
+    return this.shipments.filter(s => s.estado === status);
+  }
+
+  /**
+   * Actualiza la ruta asignada de un envío
+   */
+  updateShipmentRoute(id: string, ruta: string): void {
+    const shipment = this.shipments.find(s => s.id === id);
+    if (shipment) {
+      shipment.rutaAsignada = ruta;
+      this.shipmentsSubject.next([...this.shipments]);
+    }
+  }
+
+  /**
    * Obtiene un envío por su ID
    */
   getShipmentById(id: string): Shipment | undefined {

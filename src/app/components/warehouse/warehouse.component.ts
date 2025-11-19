@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { ShipmentsService } from '../../services/shipments.service';
-import { Shipment } from '../../models/shipment.model';
+import { Shipment, ShipmentStatus } from '../../models/shipment.model';
 
 /**
  * Componente para gestión de depósito / centro de distribución
@@ -27,7 +28,10 @@ export class WarehouseComponent implements OnInit {
   ocupacionTotal = 0;
   porcentajeOcupacion = 0;
 
-  constructor(private shipmentsService: ShipmentsService) {}
+  constructor(
+    private shipmentsService: ShipmentsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadShipments();
@@ -68,6 +72,48 @@ export class WarehouseComponent implements OnInit {
     if (this.porcentajeOcupacion >= 90) return '#e74c3c';
     if (this.porcentajeOcupacion >= 70) return '#f39c12';
     return '#27ae60';
+  }
+
+  /**
+   * Mueve un paquete a la siguiente zona
+   */
+  moverPaquete(shipment: Shipment, nuevoEstado: ShipmentStatus): void {
+    if (confirm(`¿Mover paquete ${shipment.id} a estado "${nuevoEstado}"?`)) {
+      this.shipmentsService.updateShipmentStatus(shipment.id, nuevoEstado);
+      this.loadShipments();
+    }
+  }
+
+  /**
+   * Navega al detalle del envío
+   */
+  verDetalle(shipment: Shipment): void {
+    this.router.navigate(['/envio', shipment.id]);
+  }
+
+  /**
+   * Obtiene el siguiente estado posible según el estado actual
+   */
+  getSiguienteEstado(estado: ShipmentStatus): ShipmentStatus | null {
+    const estados: Record<ShipmentStatus, ShipmentStatus | null> = {
+      'Recepcionado': 'En depósito',
+      'En depósito': 'Clasificado',
+      'Clasificado': 'En tránsito',
+      'En tránsito': 'En reparto',
+      'En reparto': 'Entregado',
+      'Entregado': null,
+      'En devolución': null,
+      'Con reclamo': null,
+      'Cancelado': null
+    };
+    return estados[estado] || null;
+  }
+
+  /**
+   * Verifica si se puede mover el paquete
+   */
+  puedeMover(estado: ShipmentStatus): boolean {
+    return this.getSiguienteEstado(estado) !== null;
   }
 }
 

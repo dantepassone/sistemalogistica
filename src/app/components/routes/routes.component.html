@@ -5,7 +5,8 @@
   </div>
 
   <div class="routes-grid">
-    <div class="route-card" *ngFor="let route of routes">
+    <div class="route-card" *ngFor="let route of routes" 
+         [class.selected]="selectedRoute === route.ruta">
       <div class="route-header">
         <div class="route-icon">🗺️</div>
         <h2>{{ route.ruta }}</h2>
@@ -15,6 +16,90 @@
           <span class="stat-label">Envíos asignados:</span>
           <span class="stat-value">{{ route.cantidad }}</span>
         </div>
+        <div class="route-actions">
+          <button class="btn-primary" (click)="selectRoute(route.ruta)">
+            Ver Detalles
+          </button>
+          <button class="btn-optimize" (click)="optimizeRoute(route.ruta)">
+            ⚡ Optimizar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detalles de ruta seleccionada -->
+  <div class="route-details" *ngIf="selectedRoute">
+    <div class="details-header">
+      <h2>Envíos en {{ selectedRoute }}</h2>
+      <button class="btn-close" (click)="selectedRoute = ''">✕</button>
+    </div>
+    <div class="shipments-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Destino</th>
+            <th>Estado</th>
+            <th>Prioridad</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let shipment of routeShipments">
+            <td>{{ shipment.codigoTrazabilidad }}</td>
+            <td>{{ shipment.destino }}, {{ shipment.ciudad }}</td>
+            <td><span class="status-badge" [class]="'status-' + shipment.estado.toLowerCase().replace(' ', '-')">
+              {{ shipment.estado }}
+            </span></td>
+            <td><span class="priority-badge" [class]="'priority-' + shipment.prioridad.toLowerCase()">
+              {{ shipment.prioridad }}
+            </span></td>
+            <td>
+              <button class="btn-small btn-primary" (click)="verDetalle(shipment)">Ver</button>
+            </td>
+          </tr>
+          <tr *ngIf="routeShipments.length === 0">
+            <td colspan="5" class="empty-message">No hay envíos en esta ruta</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Resultado de optimización -->
+  <div class="optimization-modal" *ngIf="showOptimization && optimizationResult">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>⚡ Optimización de Ruta</h2>
+        <button class="btn-close" (click)="closeOptimization()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="optimization-result">
+          <h3>{{ optimizationResult.ruta }}</h3>
+          <div class="result-grid">
+            <div class="result-item">
+              <span class="label">Total de envíos:</span>
+              <span class="value">{{ optimizationResult.totalEnvios }}</span>
+            </div>
+            <div class="result-item">
+              <span class="label">Distancia estimada:</span>
+              <span class="value">{{ optimizationResult.distanciaEstimada }} km</span>
+            </div>
+            <div class="result-item">
+              <span class="label">Tiempo estimado:</span>
+              <span class="value">{{ optimizationResult.tiempoEstimado }} horas</span>
+            </div>
+            <div class="result-item">
+              <span class="label">Costo estimado:</span>
+              <span class="value">${{ optimizationResult.costoEstimado }}</span>
+            </div>
+          </div>
+          <p class="optimization-note">{{ optimizationResult.optimizacion }}</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" (click)="closeOptimization()">Cerrar</button>
       </div>
     </div>
   </div>

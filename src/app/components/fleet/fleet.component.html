@@ -60,7 +60,50 @@
           <span class="label">Próximo Mantenimiento:</span>
           <span class="value">{{ getValor(vehicle.proximoMantenimiento) }}</span>
         </div>
+        <div class="vehicle-actions">
+          <button class="btn-small btn-primary" (click)="selectVehicle(vehicle)">
+            Ver / Asignar
+          </button>
+          <select class="status-select" (change)="cambiarEstado(vehicle, $any($event.target).value)">
+            <option value="">Cambiar estado...</option>
+            <option *ngFor="let estado of getEstadosPosibles(vehicle.estado)" [value]="estado">
+              {{ estado }}
+            </option>
+          </select>
+        </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Panel de asignación -->
+  <div class="assignment-panel" *ngIf="selectedVehicle">
+    <div class="panel-header">
+      <h2>Asignar Envío - {{ selectedVehicle.patente }}</h2>
+      <button class="btn-close" (click)="closeSelection()">✕</button>
+    </div>
+    <div class="panel-body">
+      <div class="vehicle-details">
+        <p><strong>Chofer:</strong> {{ selectedVehicle.chofer }}</p>
+        <p><strong>Capacidad:</strong> {{ selectedVehicle.capacidad }} kg</p>
+        <p><strong>Estado:</strong> {{ selectedVehicle.estado }}</p>
+      </div>
+      <form (ngSubmit)="asignarEnvio()" class="assignment-form">
+        <div class="form-group">
+          <label>Seleccionar Envío *</label>
+          <select [(ngModel)]="assignmentData.shipmentId" name="shipmentId" required>
+            <option value="">Seleccione un envío...</option>
+            <option *ngFor="let shipment of availableShipments" [value]="shipment.id">
+              {{ shipment.codigoTrazabilidad }} - {{ shipment.destino }} ({{ shipment.peso }} kg)
+            </option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" (click)="closeSelection()">Cancelar</button>
+          <button type="submit" class="btn-primary" [disabled]="selectedVehicle.estado !== 'Disponible'">
+            Asignar Envío
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

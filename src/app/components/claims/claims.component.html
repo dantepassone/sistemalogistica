@@ -23,6 +23,56 @@
     </div>
   </div>
 
+  <div class="actions-section">
+    <button class="btn-primary" (click)="showNewClaimForm = true">
+      + Nuevo Reclamo
+    </button>
+  </div>
+
+  <!-- Formulario de nuevo reclamo -->
+  <div class="new-claim-form" *ngIf="showNewClaimForm">
+    <div class="form-header">
+      <h2>Nuevo Reclamo</h2>
+      <button class="btn-close" (click)="cancelarNuevoReclamo()">✕</button>
+    </div>
+    <form (ngSubmit)="crearReclamo()" class="claim-form">
+      <div class="form-group">
+        <label>ID de Envío *</label>
+        <input type="text" [(ngModel)]="newClaim.shipmentId" name="shipmentId" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Tipo *</label>
+          <select [(ngModel)]="newClaim.tipo" name="tipo" required>
+            <option value="Reclamo">Reclamo</option>
+            <option value="Devolución">Devolución</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Prioridad *</label>
+          <select [(ngModel)]="newClaim.prioridad" name="prioridad" required>
+            <option value="Baja">Baja</option>
+            <option value="Media">Media</option>
+            <option value="Alta">Alta</option>
+            <option value="Urgente">Urgente</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Motivo *</label>
+        <input type="text" [(ngModel)]="newClaim.motivo" name="motivo" required>
+      </div>
+      <div class="form-group">
+        <label>Descripción *</label>
+        <textarea [(ngModel)]="newClaim.descripcion" name="descripcion" rows="4" required></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" (click)="cancelarNuevoReclamo()">Cancelar</button>
+        <button type="submit" class="btn-primary">Crear Reclamo</button>
+      </div>
+    </form>
+  </div>
+
   <div class="claims-list">
     <div *ngFor="let claim of claims" class="claim-card">
       <div class="claim-header">
@@ -57,6 +107,17 @@
         </div>
         <div class="claim-description">
           <p>{{ claim.descripcion }}</p>
+        </div>
+        <div class="claim-actions">
+          <button class="btn-small btn-primary" (click)="verEnvio(claim.shipmentId)">Ver Envío</button>
+          <div class="status-actions" *ngIf="getEstadosPosibles(claim.estado).length > 0">
+            <select class="status-select" (change)="cambiarEstado(claim, $any($event.target).value)">
+              <option value="">Cambiar estado...</option>
+              <option *ngFor="let estado of getEstadosPosibles(claim.estado)" [value]="estado">
+                {{ estado }}
+              </option>
+            </select>
+          </div>
         </div>
       </div>
     </div>

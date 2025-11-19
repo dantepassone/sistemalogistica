@@ -1,0 +1,97 @@
+<div class="warehouse-container">
+  <div class="header-section">
+    <h1>Depósito / Centro de Distribución</h1>
+    <p>Gestión de inventario en tránsito y control de almacenamiento</p>
+  </div>
+
+  <div class="warehouse-stats">
+    <div class="stat-card">
+      <h3>Capacidad del Depósito</h3>
+      <div class="capacity-bar">
+        <div class="capacity-fill" 
+             [style.width]="porcentajeOcupacion + '%'"
+             [style.background-color]="getOcupacionColor()">
+        </div>
+      </div>
+      <p class="capacity-text">
+        <strong>{{ ocupacionTotal }}</strong> / <strong>{{ capacidadTotal }}</strong> paquetes
+        ({{ porcentajeOcupacion.toFixed(1) }}%)
+      </p>
+    </div>
+  </div>
+
+  <div class="zones-grid">
+    <div class="zone-card recepcion">
+      <div class="zone-header">
+        <h3>Zona de Recepción</h3>
+        <span class="zone-count">{{ zonas.recepcion.length }} paquetes</span>
+      </div>
+      <div class="zone-content">
+        <p>Paquetes recién recibidos esperando clasificación</p>
+        <div class="shipments-list">
+          <div *ngFor="let shipment of zonas.recepcion.slice(0, 5)" class="shipment-item">
+            <span class="shipment-id">{{ shipment.id }}</span>
+            <span class="shipment-dest">{{ shipment.destino }}</span>
+          </div>
+          <p *ngIf="zonas.recepcion.length === 0" class="empty-zone">No hay paquetes en recepción</p>
+          <p *ngIf="zonas.recepcion.length > 5" class="more-items">+{{ zonas.recepcion.length - 5 }} más</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="zone-card almacenamiento">
+      <div class="zone-header">
+        <h3>Zona de Almacenamiento</h3>
+        <span class="zone-count">{{ zonas.almacenamiento.length }} paquetes</span>
+      </div>
+      <div class="zone-content">
+        <p>Paquetes almacenados esperando asignación a ruta</p>
+        <div class="shipments-list">
+          <div *ngFor="let shipment of zonas.almacenamiento.slice(0, 5)" class="shipment-item">
+            <span class="shipment-id">{{ shipment.id }}</span>
+            <span class="shipment-dest">{{ shipment.destino }}</span>
+          </div>
+          <p *ngIf="zonas.almacenamiento.length === 0" class="empty-zone">No hay paquetes almacenados</p>
+          <p *ngIf="zonas.almacenamiento.length > 5" class="more-items">+{{ zonas.almacenamiento.length - 5 }} más</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="zone-card clasificacion">
+      <div class="zone-header">
+        <h3>Zona de Clasificación</h3>
+        <span class="zone-count">{{ zonas.clasificacion.length }} paquetes</span>
+      </div>
+      <div class="zone-content">
+        <p>Paquetes siendo clasificados por destino</p>
+        <div class="shipments-list">
+          <div *ngFor="let shipment of zonas.clasificacion.slice(0, 5)" class="shipment-item">
+            <span class="shipment-id">{{ shipment.id }}</span>
+            <span class="shipment-dest">{{ shipment.destino }}</span>
+          </div>
+          <p *ngIf="zonas.clasificacion.length === 0" class="empty-zone">No hay paquetes en clasificación</p>
+          <p *ngIf="zonas.clasificacion.length > 5" class="more-items">+{{ zonas.clasificacion.length - 5 }} más</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="zone-card despacho">
+      <div class="zone-header">
+        <h3>Zona de Despacho</h3>
+        <span class="zone-count">{{ zonas.despacho.length }} paquetes</span>
+      </div>
+      <div class="zone-content">
+        <p>Paquetes listos para salir en ruta</p>
+        <div class="shipments-list">
+          <div *ngFor="let shipment of zonas.despacho.slice(0, 5)" class="shipment-item">
+            <span class="shipment-id">{{ shipment.id }}</span>
+            <span class="shipment-dest">{{ shipment.destino }}</span>
+          </div>
+          <p *ngIf="zonas.despacho.length === 0" class="empty-zone">No hay paquetes en despacho</p>
+          <p *ngIf="zonas.despacho.length > 5" class="more-items">+{{ zonas.despacho.length - 5 }} más</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

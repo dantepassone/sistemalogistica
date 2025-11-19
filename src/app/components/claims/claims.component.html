@@ -1,0 +1,65 @@
+<div class="claims-container">
+  <div class="header-section">
+    <h1>Reclamos y Devoluciones</h1>
+    <p>Registro de reclamos, flujo de auditoría y seguimiento de casos</p>
+  </div>
+
+  <div class="claims-stats">
+    <div class="stat-item">
+      <h3>Total Reclamos</h3>
+      <p class="stat-number">{{ claims.length }}</p>
+    </div>
+    <div class="stat-item">
+      <h3>Abiertos</h3>
+      <p class="stat-number">{{ getAbiertos() }}</p>
+    </div>
+    <div class="stat-item">
+      <h3>En Investigación</h3>
+      <p class="stat-number">{{ getEnInvestigacion() }}</p>
+    </div>
+    <div class="stat-item">
+      <h3>Resueltos</h3>
+      <p class="stat-number">{{ getResueltos() }}</p>
+    </div>
+  </div>
+
+  <div class="claims-list">
+    <div *ngFor="let claim of claims" class="claim-card">
+      <div class="claim-header">
+        <div>
+          <h3>{{ claim.id }}</h3>
+          <p class="shipment-ref">Envío: {{ claim.shipmentId }}</p>
+        </div>
+        <div class="badges">
+          <span class="type-badge">{{ claim.tipo }}</span>
+          <span class="status-badge" [ngClass]="getStatusClass(claim.estado)">
+            {{ claim.estado }}
+          </span>
+          <span class="priority-badge" [ngClass]="getPriorityClass(claim.prioridad)">
+            {{ claim.prioridad }}
+          </span>
+        </div>
+      </div>
+      <div class="claim-body">
+        <div class="claim-info">
+          <div class="info-item">
+            <span class="label">Motivo:</span>
+            <span class="value">{{ claim.motivo }}</span>
+          </div>
+          <div class="info-item">
+            <span class="label">Fecha:</span>
+            <span class="value">{{ claim.fechaCreacion }}</span>
+          </div>
+          <div class="info-item" *ngIf="claim.responsable">
+            <span class="label">Responsable:</span>
+            <span class="value">{{ claim.responsable }}</span>
+          </div>
+        </div>
+        <div class="claim-description">
+          <p>{{ claim.descripcion }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

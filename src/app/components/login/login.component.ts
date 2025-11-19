@@ -22,7 +22,7 @@ export class LoginComponent {
   constructor(private router: Router) {}
 
   /**
-   * Valida el formulario y redirige al dashboard
+   * Valida el formulario y redirige al dashboard o guía
    */
   ingresar(): void {
     // Validación simple: campos no vacíos
@@ -33,7 +33,14 @@ export class LoginComponent {
 
     // Simular autenticación exitosa
     localStorage.setItem('isAuthenticated', 'true');
-    this.router.navigate(['/dashboard']);
+    
+    // Si es la primera vez, mostrar la guía
+    const hasViewedGuide = localStorage.getItem('guideViewed') === 'true';
+    if (!hasViewedGuide) {
+      this.router.navigate(['/guia']);
+    } else {
+      this.router.navigate(['/dashboard']);
+    }
   }
 }
 

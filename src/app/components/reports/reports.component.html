@@ -1,0 +1,72 @@
+<div class="reports-container">
+  <div class="header-section">
+    <h1>Reportes y Analítica</h1>
+    <p>Indicadores operativos, costos de distribución y estadísticas</p>
+  </div>
+
+  <div class="reports-grid">
+    <div class="report-card">
+      <h3>Entregas</h3>
+      <p class="report-number">{{ statistics.totalEntregas }}</p>
+      <p class="report-label">Total de entregas completadas</p>
+    </div>
+
+    <div class="report-card">
+      <h3>Tiempo Promedio</h3>
+      <p class="report-number">{{ statistics.tiempoPromedioEntrega }} días</p>
+      <p class="report-label">Tiempo promedio de entrega</p>
+    </div>
+
+    <div class="report-card">
+      <h3>Tasa de Éxito</h3>
+      <p class="report-number">{{ statistics.tasaEntregaExitosa.toFixed(1) }}%</p>
+      <p class="report-label">Tasa de entrega exitosa</p>
+    </div>
+
+    <div class="report-card">
+      <h3>Reclamos</h3>
+      <p class="report-number">{{ statistics.totalReclamos }}</p>
+      <p class="report-label">Total de reclamos registrados</p>
+    </div>
+
+    <div class="report-card">
+      <h3>Costo Total</h3>
+      <p class="report-number">${{ statistics.costoTotalDistribucion.toLocaleString() }}</p>
+      <p class="report-label">Costo total de distribución</p>
+    </div>
+
+    <div class="report-card">
+      <h3>Costo por Envío</h3>
+      <p class="report-number">$1,500</p>
+      <p class="report-label">Costo promedio por envío</p>
+    </div>
+  </div>
+
+  <div class="indicators-section">
+    <h2>Indicadores Operativos</h2>
+    <div class="indicators-grid">
+      <div class="indicator-item">
+        <h4>Eficiencia de Rutas</h4>
+        <p>85%</p>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 85%"></div>
+        </div>
+      </div>
+      <div class="indicator-item">
+        <h4>Utilización de Flota</h4>
+        <p>72%</p>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 72%"></div>
+        </div>
+      </div>
+      <div class="indicator-item">
+        <h4>Satisfacción del Cliente</h4>
+        <p>92%</p>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 92%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

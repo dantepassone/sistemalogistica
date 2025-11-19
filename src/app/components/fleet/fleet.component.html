@@ -1,0 +1,67 @@
+<div class="fleet-container">
+  <div class="header-section">
+    <h1>Flota y Recursos</h1>
+    <p>Gestión de vehículos, horarios, mantenimiento y asignación a rutas</p>
+  </div>
+
+  <div class="fleet-stats">
+    <div class="stat-item">
+      <h3>Total Vehículos</h3>
+      <p class="stat-number">{{ vehicles.length }}</p>
+    </div>
+    <div class="stat-item">
+      <h3>Disponibles</h3>
+      <p class="stat-number">{{ getDisponibles() }}</p>
+    </div>
+    <div class="stat-item">
+      <h3>En Ruta</h3>
+      <p class="stat-number">{{ getEnRuta() }}</p>
+    </div>
+    <div class="stat-item">
+      <h3>En Mantenimiento</h3>
+      <p class="stat-number">{{ getEnMantenimiento() }}</p>
+    </div>
+  </div>
+
+  <div class="vehicles-grid">
+    <div *ngFor="let vehicle of vehicles" class="vehicle-card">
+      <div class="vehicle-header">
+        <h3>{{ vehicle.patente }}</h3>
+        <span class="status-badge" [ngClass]="getStatusClass(vehicle.estado)">
+          {{ vehicle.estado }}
+        </span>
+      </div>
+      <div class="vehicle-info">
+        <div class="info-row">
+          <span class="label">Tipo:</span>
+          <span class="value">{{ vehicle.tipo }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Capacidad:</span>
+          <span class="value">{{ vehicle.capacidad }} kg</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Chofer:</span>
+          <span class="value">{{ vehicle.chofer }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Ubicación:</span>
+          <span class="value">{{ getValor(vehicle.ubicacion) }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Zona:</span>
+          <span class="value">{{ getValor(vehicle.zonaAsignada) }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Kilometraje:</span>
+          <span class="value">{{ getKilometraje(vehicle) }} km</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Próximo Mantenimiento:</span>
+          <span class="value">{{ getValor(vehicle.proximoMantenimiento) }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

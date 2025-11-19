@@ -72,10 +72,13 @@ export class ShipmentDetailComponent implements OnInit {
     const statusClasses: Record<ShipmentStatus, string> = {
       'Recepcionado': 'status-recepcionado',
       'En depósito': 'status-deposito',
+      'Clasificado': 'status-clasificado',
       'En tránsito': 'status-transito',
+      'En reparto': 'status-reparto',
       'Entregado': 'status-entregado',
       'En devolución': 'status-devolucion',
-      'Con reclamo': 'status-reclamo'
+      'Con reclamo': 'status-reclamo',
+      'Cancelado': 'status-cancelado'
     };
     return statusClasses[status] || '';
   }

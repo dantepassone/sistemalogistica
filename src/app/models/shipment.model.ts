@@ -3,6 +3,7 @@
  */
 export interface Shipment {
   id: string;
+  codigoTrazabilidad: string; // Código único de trazabilidad
   remitente: string;
   destinatario: string;
   origen: string;
@@ -11,11 +12,32 @@ export interface Shipment {
   provincia: string;
   direccion: string;
   estado: ShipmentStatus;
+  fechaRecepcion?: string;
   fechaEstimadaEntrega: string;
+  fechaEntrega?: string;
   rutaAsignada: string;
-  peso?: number;
-  dimensiones?: string;
-  valorDeclarado?: number;
+  vehiculoAsignado?: string;
+  choferAsignado?: string;
+  peso: number;
+  volumen: number; // en m³
+  dimensiones: string;
+  tipo: PackageType;
+  prioridad: 'Normal' | 'Alta' | 'Urgente';
+  valorDeclarado: number;
+  ubicacionActual?: string; // GPS o ubicación en depósito
+  historialTracking?: TrackingEvent[];
+  zonaDeposito?: string;
+}
+
+export type PackageType = 'Paquete' | 'Sobre' | 'Caja' | 'Pallet' | 'Carga Especial';
+
+export interface TrackingEvent {
+  fecha: string;
+  hora: string;
+  estado: ShipmentStatus;
+  ubicacion?: string;
+  descripcion: string;
+  usuario?: string;
 }
 
 /**
@@ -24,8 +46,11 @@ export interface Shipment {
 export type ShipmentStatus = 
   | 'Recepcionado' 
   | 'En depósito' 
+  | 'Clasificado'
   | 'En tránsito' 
+  | 'En reparto'
   | 'Entregado' 
   | 'En devolución' 
-  | 'Con reclamo';
+  | 'Con reclamo'
+  | 'Cancelado';
 

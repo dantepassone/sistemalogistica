@@ -1,0 +1,189 @@
+<div class="guide-container">
+  <div class="guide-card">
+    <div class="guide-header">
+      <h1>👋 Bienvenido a LogisPro</h1>
+      <p class="subtitle">por ByteCore - Sistema de Gestión Logística</p>
+    </div>
+
+    <div class="guide-content">
+      <div class="intro-section">
+        <h2>📚 Guía de Uso del Sistema</h2>
+        <p>
+          Esta guía te ayudará a entender cómo funciona LogisPro y cómo utilizar cada módulo
+          para gestionar eficientemente tus envíos y operaciones logísticas.
+        </p>
+      </div>
+
+      <div class="flow-section">
+        <h3>🔄 Flujo Principal del Sistema</h3>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>📥 Recepción</h4>
+              <p>Registra nuevos paquetes con código único de trazabilidad</p>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>🏭 Depósito</h4>
+              <p>Clasifica y organiza los paquetes en el centro de distribución</p>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>🗺️ Rutas</h4>
+              <p>Planifica y optimiza las rutas de entrega</p>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h4>🚚 Envío</h4>
+              <p>Asigna vehículos y realiza el seguimiento en tiempo real</p>
+            </div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <h4>✅ Entrega</h4>
+              <p>Confirma la entrega y gestiona reclamos si es necesario</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modules-section" *ngIf="showFullGuide">
+        <h3>📦 Módulos del Sistema</h3>
+        
+        <div class="module-card">
+          <div class="module-icon">📥</div>
+          <div class="module-info">
+            <h4>1. Módulo de Recepción y Registro</h4>
+            <p><strong>Función:</strong> Registrar nuevos paquetes en el sistema</p>
+            <ul>
+              <li>Carga de datos del paquete (peso, volumen, origen, destino)</li>
+              <li>Generación automática de código único de trazabilidad</li>
+              <li>Registro de tipo de paquete y prioridad</li>
+            </ul>
+            <p><strong>Cómo usar:</strong> Completa el formulario con los datos del remitente, destinatario y características del paquete. El sistema generará automáticamente un código de trazabilidad único.</p>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <div class="module-icon">🏭</div>
+          <div class="module-info">
+            <h4>2. Módulo de Depósito / Centro de Distribución</h4>
+            <p><strong>Función:</strong> Gestionar el inventario en el depósito</p>
+            <ul>
+              <li>Visualización de paquetes por zona de depósito</li>
+              <li>Clasificación automática/semi-automática</li>
+              <li>Control de almacenamiento y ubicación física</li>
+            </ul>
+            <p><strong>Cómo usar:</strong> Visualiza los paquetes organizados por zonas. Puedes ver el estado del depósito y la ubicación de cada paquete.</p>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <div class="module-icon">📋</div>
+          <div class="module-info">
+            <h4>3. Módulo de Envíos y Seguimiento</h4>
+            <p><strong>Función:</strong> Gestionar y rastrear todos los envíos</p>
+            <ul>
+              <li>Listado completo de envíos con filtros</li>
+              <li>Consulta de detalles y estado actual</li>
+              <li>Historial de tracking en tiempo real</li>
+              <li>Cambio de estados de envío</li>
+            </ul>
+            <p><strong>Cómo usar:</strong> Navega a "Envíos" para ver todos los paquetes. Usa los filtros para buscar por estado o texto. Haz clic en "Ver detalle" para ver información completa y el historial de tracking.</p>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <div class="module-icon">🗺️</div>
+          <div class="module-info">
+            <h4>4. Módulo de Planificación y Optimización de Rutas</h4>
+            <p><strong>Función:</strong> Optimizar rutas de entrega</p>
+            <ul>
+              <li>Visualización de rutas asignadas</li>
+              <li>Agrupación de envíos por zona geográfica</li>
+              <li>Optimización automática de rutas</li>
+            </ul>
+            <p><strong>Cómo usar:</strong> Visualiza las rutas disponibles y la cantidad de envíos asignados a cada una. El sistema agrupa automáticamente los envíos por destino geográfico.</p>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <div class="module-icon">🚛</div>
+          <div class="module-info">
+            <h4>5. Módulo de Flota y Recursos</h4>
+            <p><strong>Función:</strong> Gestionar vehículos y recursos</p>
+            <ul>
+              <li>Gestión de vehículos disponibles</li>
+              <li>Asignación de vehículos a rutas</li>
+              <li>Control de horarios y mantenimiento</li>
+            </ul>
+            <p><strong>Cómo usar:</strong> Visualiza la flota disponible, su estado y asignaciones. Puedes ver qué vehículos están asignados a cada ruta.</p>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <div class="module-icon">⚠️</div>
+          <div class="module-info">
+            <h4>6. Módulo de Reclamos y Devoluciones</h4>
+            <p><strong>Función:</strong> Gestionar reclamos y devoluciones</p>
+            <ul>
+              <li>Registro de reclamos</li>
+              <li>Seguimiento del caso</li>
+              <li>Coordinación de devoluciones</li>
+              <li>Flujo de auditoría</li>
+            </ul>
+            <p><strong>Cómo usar:</strong> Registra nuevos reclamos con los datos del envío. Puedes ver el estado de cada reclamo y gestionar las devoluciones.</p>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <div class="module-icon">📊</div>
+          <div class="module-info">
+            <h4>7. Módulo de Reportes y Analítica</h4>
+            <p><strong>Función:</strong> Análisis y reportes del sistema</p>
+            <ul>
+              <li>Reportes de entregas</li>
+              <li>Indicadores operativos (KPIs)</li>
+              <li>Estadísticas de tiempos de entrega</li>
+              <li>Análisis de costos y desvíos</li>
+            </ul>
+            <p><strong>Cómo usar:</strong> Accede a reportes detallados sobre el rendimiento del sistema, tiempos promedio de entrega, y estadísticas de reclamos.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tips-section">
+        <h3>💡 Consejos de Uso</h3>
+        <ul class="tips-list">
+          <li>✅ <strong>Dashboard:</strong> Usa el dashboard para tener una vista general rápida de todas las estadísticas</li>
+          <li>✅ <strong>Filtros:</strong> Aprovecha los filtros en los listados para encontrar rápidamente lo que buscas</li>
+          <li>✅ <strong>Código de Trazabilidad:</strong> Cada paquete tiene un código único que puedes usar para rastrearlo</li>
+          <li>✅ <strong>Estados:</strong> Los estados de los envíos se actualizan automáticamente según las acciones que realices</li>
+          <li>✅ <strong>Historial:</strong> Revisa el historial de tracking para ver todos los eventos de un envío</li>
+        </ul>
+      </div>
+
+      <div class="actions-section">
+        <button class="btn-toggle" (click)="toggleGuide()">
+          {{ showFullGuide ? 'Ocultar' : 'Ver' }} Guía Completa
+        </button>
+        <button class="btn-primary" (click)="markAsRead()">
+          Entendido, ir al Dashboard
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

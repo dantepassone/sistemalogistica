@@ -6,6 +6,9 @@
       Plataforma integral para la gestión de envíos, rutas y distribución de paquetes
       en empresas de transporte de Argentina.
     </p>
+    <div class="guide-banner" *ngIf="!hasViewedGuide()">
+      <p>👋 ¿Primera vez? <a routerLink="/guia">Ver guía de uso del sistema</a></p>
+    </div>
   </div>
 
   <div class="statistics-grid">
@@ -43,24 +46,48 @@
   </div>
 
   <div class="actions-section">
-    <h2>Acciones Rápidas</h2>
+    <h2>Módulos del Sistema</h2>
     <div class="actions-grid">
+      <button class="action-card" (click)="goToReception()">
+        <div class="action-icon">📥</div>
+        <h3>Recepción</h3>
+        <p>Registro de paquetes</p>
+      </button>
+
+      <button class="action-card" (click)="goToWarehouse()">
+        <div class="action-icon">🏭</div>
+        <h3>Depósito</h3>
+        <p>Centro de distribución</p>
+      </button>
+
       <button class="action-card" (click)="goToShipments()">
         <div class="action-icon">📋</div>
-        <h3>Listado de Envíos</h3>
-        <p>Ver y gestionar todos los envíos</p>
+        <h3>Envíos</h3>
+        <p>Listado y seguimiento</p>
       </button>
 
       <button class="action-card" (click)="goToRoutes()">
         <div class="action-icon">🗺️</div>
-        <h3>Rutas y Distribución</h3>
-        <p>Gestionar rutas y asignaciones</p>
+        <h3>Rutas</h3>
+        <p>Planificación y optimización</p>
       </button>
 
-      <button class="action-card" (click)="goToPlans()">
-        <div class="action-icon">⚙️</div>
-        <h3>Configuración / Planes</h3>
-        <p>Ver planes y características</p>
+      <button class="action-card" (click)="goToFleet()">
+        <div class="action-icon">🚛</div>
+        <h3>Flota</h3>
+        <p>Vehículos y recursos</p>
+      </button>
+
+      <button class="action-card" (click)="goToClaims()">
+        <div class="action-icon">⚠️</div>
+        <h3>Reclamos</h3>
+        <p>Devoluciones y casos</p>
+      </button>
+
+      <button class="action-card" (click)="goToReports()">
+        <div class="action-icon">📊</div>
+        <h3>Reportes</h3>
+        <p>Analítica e indicadores</p>
       </button>
     </div>
   </div>

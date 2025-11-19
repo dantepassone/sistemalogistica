@@ -1,6 +1,6 @@
-# ByteCore - Sistema de Gestión Logística
+# LogisPro por ByteCore - Sistema de Gestión Logística
 
-Sistema de gestión logística y de paquetería para empresas de transporte de paquetes en Argentina. Demo web desarrollada con Angular.
+Sistema de gestión logística y de paquetería para empresas de transporte de paquetes en Argentina. Demo web desarrollada con Angular por ByteCore.
 
 ## 📋 Descripción
 

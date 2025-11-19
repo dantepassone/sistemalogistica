@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ShipmentsService } from '../../services/shipments.service';
 import { Subscription } from 'rxjs';
@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -67,10 +67,52 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   /**
+   * Navega a la sección de recepción
+   */
+  goToReception(): void {
+    this.router.navigate(['/recepcion']);
+  }
+
+  /**
+   * Navega a la sección de depósito
+   */
+  goToWarehouse(): void {
+    this.router.navigate(['/deposito']);
+  }
+
+  /**
+   * Navega a la sección de flota
+   */
+  goToFleet(): void {
+    this.router.navigate(['/flota']);
+  }
+
+  /**
+   * Navega a la sección de reclamos
+   */
+  goToClaims(): void {
+    this.router.navigate(['/reclamos']);
+  }
+
+  /**
+   * Navega a la sección de reportes
+   */
+  goToReports(): void {
+    this.router.navigate(['/reportes']);
+  }
+
+  /**
    * Navega a la sección de planes
    */
   goToPlans(): void {
     this.router.navigate(['/planes']);
+  }
+
+  /**
+   * Verifica si el usuario ya vio la guía
+   */
+  hasViewedGuide(): boolean {
+    return localStorage.getItem('guideViewed') === 'true';
   }
 }
 

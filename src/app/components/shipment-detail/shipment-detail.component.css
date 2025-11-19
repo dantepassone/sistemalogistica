@@ -126,6 +126,21 @@
   color: #d32f2f;
 }
 
+.status-clasificado {
+  background-color: #e1f5fe;
+  color: #0277bd;
+}
+
+.status-reparto {
+  background-color: #fff9c4;
+  color: #f57f17;
+}
+
+.status-cancelado {
+  background-color: #eceff1;
+  color: #546e7a;
+}
+
 .actions-description {
   color: #666;
   margin: 0 0 1rem 0;
@@ -180,6 +195,75 @@
   margin-bottom: 1rem;
 }
 
+.tracking-timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.tracking-event {
+  position: relative;
+  padding-bottom: 2rem;
+  border-left: 2px solid #e0e0e0;
+}
+
+.tracking-event:last-child {
+  border-left: none;
+}
+
+.event-marker {
+  position: absolute;
+  left: -8px;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #667eea;
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px #667eea;
+}
+
+.event-content {
+  margin-left: 1.5rem;
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.event-date {
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.event-status {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.event-description {
+  margin: 0.5rem 0;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.event-user {
+  margin: 0;
+  color: #999;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
 @media (max-width: 768px) {
   .detail-container {
     padding: 1rem;
@@ -195,6 +279,10 @@
 
   .btn-action {
     width: 100%;
+  }
+
+  .tracking-timeline {
+    padding-left: 1.5rem;
   }
 }
 

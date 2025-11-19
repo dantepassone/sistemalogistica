@@ -10,10 +10,18 @@
       <h2>Información del Envío</h2>
       <div class="info-grid">
         <div class="info-item">
+          <label>Código de Trazabilidad:</label>
+          <span><strong>{{ shipment.codigoTrazabilidad || 'N/A' }}</strong></span>
+        </div>
+        <div class="info-item">
           <label>Estado Actual:</label>
           <span class="status-badge" [ngClass]="getStatusClass(shipment.estado)">
             {{ shipment.estado }}
           </span>
+        </div>
+        <div class="info-item" *ngIf="shipment.ubicacionActual">
+          <label>Ubicación Actual:</label>
+          <span>{{ shipment.ubicacionActual }}</span>
         </div>
         <div class="info-item">
           <label>Remitente:</label>
@@ -62,6 +70,31 @@
         <div class="info-item" *ngIf="shipment.valorDeclarado">
           <label>Valor Declarado:</label>
           <span>${{ shipment.valorDeclarado | number }}</span>
+        </div>
+        <div class="info-item" *ngIf="shipment.vehiculoAsignado">
+          <label>Vehículo Asignado:</label>
+          <span>{{ shipment.vehiculoAsignado }}</span>
+        </div>
+        <div class="info-item" *ngIf="shipment.choferAsignado">
+          <label>Chofer Asignado:</label>
+          <span>{{ shipment.choferAsignado }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-section" *ngIf="shipment.historialTracking && shipment.historialTracking.length > 0">
+      <h2>Seguimiento y Trazabilidad</h2>
+      <div class="tracking-timeline">
+        <div *ngFor="let event of shipment.historialTracking" class="tracking-event">
+          <div class="event-marker"></div>
+          <div class="event-content">
+            <div class="event-header">
+              <span class="event-date">{{ event.fecha }} {{ event.hora }}</span>
+              <span class="event-status" [ngClass]="getStatusClass(event.estado)">{{ event.estado }}</span>
+            </div>
+            <p class="event-description">{{ event.descripcion }}</p>
+            <p class="event-user" *ngIf="event.usuario">Por: {{ event.usuario }}</p>
+          </div>
         </div>
       </div>
     </div>

@@ -4,11 +4,18 @@
       <h1>LogisPro</h1>
       <span class="subtitle">por ByteCore</span>
     </div>
-    <ul class="navbar-menu">
-      <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
-      <li><a routerLink="/envios" routerLinkActive="active">Envíos</a></li>
-      <li><a routerLink="/rutas" routerLinkActive="active">Rutas</a></li>
-      <li><a routerLink="/planes" routerLinkActive="active">Planes</a></li>
+    <button class="menu-toggle" (click)="toggleMenu()" *ngIf="isMobile()">
+      <span>☰</span>
+    </button>
+    <ul class="navbar-menu" [class.menu-open]="menuOpen">
+      <li><a routerLink="/dashboard" routerLinkActive="active" (click)="closeMenu()">Dashboard</a></li>
+      <li><a routerLink="/recepcion" routerLinkActive="active" (click)="closeMenu()">Recepción</a></li>
+      <li><a routerLink="/deposito" routerLinkActive="active" (click)="closeMenu()">Depósito</a></li>
+      <li><a routerLink="/envios" routerLinkActive="active" (click)="closeMenu()">Envíos</a></li>
+      <li><a routerLink="/rutas" routerLinkActive="active" (click)="closeMenu()">Rutas</a></li>
+      <li><a routerLink="/flota" routerLinkActive="active" (click)="closeMenu()">Flota</a></li>
+      <li><a routerLink="/reclamos" routerLinkActive="active" (click)="closeMenu()">Reclamos</a></li>
+      <li><a routerLink="/reportes" routerLinkActive="active" (click)="closeMenu()">Reportes</a></li>
       <li><a (click)="logout()" class="logout-link">Cerrar Sesión</a></li>
     </ul>
   </div>

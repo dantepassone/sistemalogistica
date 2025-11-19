@@ -1,0 +1,111 @@
+<div class="reception-container">
+  <div class="header-section">
+    <h1>Recepción y Registro de Paquetes</h1>
+    <p>Registre nuevos paquetes en el sistema con código único de trazabilidad</p>
+  </div>
+
+  <div class="reception-card">
+    <form (ngSubmit)="registrarPaquete()" class="reception-form">
+      <div class="form-section">
+        <h3>Datos del Remitente y Destinatario</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="remitente">Remitente *</label>
+            <input type="text" id="remitente" [(ngModel)]="formData.remitente" name="remitente" required>
+          </div>
+          <div class="form-group">
+            <label for="destinatario">Destinatario *</label>
+            <input type="text" id="destinatario" [(ngModel)]="formData.destinatario" name="destinatario" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Origen y Destino</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="origen">Origen *</label>
+            <input type="text" id="origen" [(ngModel)]="formData.origen" name="origen" required>
+          </div>
+          <div class="form-group">
+            <label for="destino">Destino *</label>
+            <input type="text" id="destino" [(ngModel)]="formData.destino" name="destino" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ciudad">Ciudad *</label>
+            <input type="text" id="ciudad" [(ngModel)]="formData.ciudad" name="ciudad" required>
+          </div>
+          <div class="form-group">
+            <label for="provincia">Provincia *</label>
+            <select id="provincia" [(ngModel)]="formData.provincia" name="provincia" required>
+              <option value="">Seleccione...</option>
+              <option *ngFor="let prov of provincias" [value]="prov">{{ prov }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="direccion">Dirección Completa *</label>
+          <input type="text" id="direccion" [(ngModel)]="formData.direccion" name="direccion" required>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Características del Paquete</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="peso">Peso (kg) *</label>
+            <input type="number" id="peso" [(ngModel)]="formData.peso" name="peso" step="0.1" min="0.1" required>
+          </div>
+          <div class="form-group">
+            <label for="dimensiones">Dimensiones (largo x ancho x alto en cm)</label>
+            <input type="text" id="dimensiones" [(ngModel)]="formData.dimensiones" name="dimensiones" 
+                   placeholder="30x20x15" (blur)="calcularVolumen()">
+          </div>
+          <div class="form-group">
+            <label for="volumen">Volumen (m³)</label>
+            <input type="number" id="volumen" [(ngModel)]="formData.volumen" name="volumen" step="0.001" min="0" readonly>
+            <small>Se calcula automáticamente</small>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tipo">Tipo de Paquete *</label>
+            <select id="tipo" [(ngModel)]="formData.tipo" name="tipo" required>
+              <option *ngFor="let tipo of tiposPaquete" [value]="tipo">{{ tipo }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="prioridad">Prioridad *</label>
+            <select id="prioridad" [(ngModel)]="formData.prioridad" name="prioridad" required>
+              <option *ngFor="let prioridad of prioridades" [value]="prioridad">{{ prioridad }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="valorDeclarado">Valor Declarado ($)</label>
+            <input type="number" id="valorDeclarado" [(ngModel)]="formData.valorDeclarado" name="valorDeclarado" min="0">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <div class="messages">
+          <div class="success-message" *ngIf="mensajeExito">
+            <span>✅</span>
+            <span>{{ mensajeExito }}</span>
+          </div>
+          <div class="error-message" *ngIf="mensajeError">
+            <span>⚠️</span>
+            <span>{{ mensajeError }}</span>
+          </div>
+        </div>
+        <div class="buttons">
+          <button type="button" class="btn-secondary" (click)="limpiarFormulario()">Limpiar Formulario</button>
+          <button type="submit" class="btn-primary">📦 Registrar Paquete</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

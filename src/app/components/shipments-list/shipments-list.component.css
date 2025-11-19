@@ -143,6 +143,21 @@
   color: #d32f2f;
 }
 
+.status-clasificado {
+  background-color: #e1f5fe;
+  color: #0277bd;
+}
+
+.status-reparto {
+  background-color: #fff9c4;
+  color: #f57f17;
+}
+
+.status-cancelado {
+  background-color: #eceff1;
+  color: #546e7a;
+}
+
 .btn-detail {
   display: inline-block;
   padding: 0.5rem 1rem;

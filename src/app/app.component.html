@@ -4,5 +4,12 @@
   <main class="main-content">
     <router-outlet></router-outlet>
   </main>
+  <!-- Footer solo se muestra si estamos autenticados -->
+  <footer class="app-footer" *ngIf="isAuthenticated()">
+    <div class="footer-content">
+      <p>&copy; 2024 LogisPro por ByteCore. Todos los derechos reservados.</p>
+      <p class="footer-subtitle">Sistema de gestión logística y de paquetería</p>
+    </div>
+  </footer>
 </div>
 

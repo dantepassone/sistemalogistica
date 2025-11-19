@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'ByteCore - Sistema de Gestión Logística';
+  title = 'LogisPro por ByteCore - Sistema de Gestión Logística';
 
   /**
    * Verifica si el usuario está autenticado

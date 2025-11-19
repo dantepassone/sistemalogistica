@@ -1,7 +1,7 @@
 # Script para verificar el estado del servidor
 $env:Path += ";C:\Program Files\nodejs"
 
-Write-Host "=== Verificacion del Servidor ByteCore ===" -ForegroundColor Cyan
+Write-Host "=== Verificacion del Servidor LogisPro ===" -ForegroundColor Cyan
 Write-Host ""
 
 # Verificar procesos

@@ -151,16 +151,21 @@ export class FleetComponent {
       return;
     }
 
+    const vehiculoPatente = this.selectedVehicle.patente;
+    const vehiculoChofer = this.selectedVehicle.chofer;
+    
     shipment.vehiculoAsignado = this.selectedVehicle.id;
-    shipment.choferAsignado = this.selectedVehicle.chofer;
-    shipment.estado = 'En tránsito';
+    shipment.choferAsignado = vehiculoChofer;
     this.selectedVehicle.estado = 'En ruta';
     this.selectedVehicle.ubicacion = 'En ruta';
 
-    this.shipmentsService.updateShipmentStatus(shipment.id, 'En tránsito');
+    // Actualizar estado con descripción
+    const descripcion = `Asignado a vehículo ${vehiculoPatente} - Chofer: ${vehiculoChofer}`;
+    this.shipmentsService.updateShipmentStatus(shipment.id, 'En tránsito', descripcion, 'Operador Flota');
+    
     this.showAssignForm = false;
     this.selectedVehicle = null;
-    alert('Envío asignado exitosamente');
+    alert(`✅ Envío ${shipment.codigoTrazabilidad} asignado exitosamente al vehículo ${vehiculoPatente}`);
   }
 
   /**

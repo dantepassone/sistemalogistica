@@ -78,10 +78,29 @@ export class WarehouseComponent implements OnInit {
    * Mueve un paquete a la siguiente zona
    */
   moverPaquete(shipment: Shipment, nuevoEstado: ShipmentStatus): void {
-    if (confirm(`¿Mover paquete ${shipment.id} a estado "${nuevoEstado}"?`)) {
-      this.shipmentsService.updateShipmentStatus(shipment.id, nuevoEstado);
+    if (confirm(`¿Mover paquete ${shipment.codigoTrazabilidad} a estado "${nuevoEstado}"?`)) {
+      const descripcion = this.getDescripcionMovimiento(nuevoEstado);
+      this.shipmentsService.updateShipmentStatus(shipment.id, nuevoEstado, descripcion, 'Operador Depósito');
       this.loadShipments();
     }
+  }
+
+  /**
+   * Obtiene descripción para el movimiento entre zonas
+   */
+  private getDescripcionMovimiento(estado: ShipmentStatus): string {
+    const descripciones: Record<ShipmentStatus, string> = {
+      'En depósito': 'Movido a zona de almacenamiento',
+      'Clasificado': 'Clasificado y listo para despacho',
+      'En tránsito': 'Despachado desde depósito',
+      'En reparto': 'En proceso de reparto',
+      'Entregado': 'Entregado al destinatario',
+      'En devolución': 'En proceso de devolución',
+      'Con reclamo': 'Reclamo registrado',
+      'Recepcionado': 'Recepcionado en depósito',
+      'Cancelado': 'Cancelado'
+    };
+    return descripciones[estado] || `Estado cambiado a ${estado}`;
   }
 
   /**

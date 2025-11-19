@@ -25,7 +25,7 @@
         id="search-input" 
         [(ngModel)]="searchText" 
         (input)="onSearchChange()"
-        placeholder="ID, remitente o destinatario..."
+        placeholder="ID, código de trazabilidad, remitente, destinatario, destino..."
         class="search-input">
     </div>
   </div>
@@ -38,7 +38,7 @@
     <table class="shipments-table">
       <thead>
         <tr>
-          <th>ID</th>
+          <th>Código</th>
           <th>Remitente</th>
           <th>Destinatario</th>
           <th>Origen</th>
@@ -49,7 +49,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let shipment of filteredShipments">
-          <td><strong>{{ shipment.id }}</strong></td>
+          <td><strong>{{ shipment.codigoTrazabilidad }}</strong><br><small style="color: #666;">{{ shipment.id }}</small></td>
           <td>{{ shipment.remitente }}</td>
           <td>{{ shipment.destinatario }}</td>
           <td>{{ shipment.origen }}</td>

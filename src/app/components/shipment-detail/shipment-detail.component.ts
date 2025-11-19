@@ -48,14 +48,40 @@ export class ShipmentDetailComponent implements OnInit {
    * Cambia el estado del envío
    */
   changeStatus(newStatus: ShipmentStatus): void {
-    if (this.shipment && confirm(`¿Desea cambiar el estado a "${newStatus}"?`)) {
-      const success = this.shipmentsService.updateShipmentStatus(this.shipmentId, newStatus);
+    if (this.shipment && confirm(`¿Desea cambiar el estado de "${this.shipment.estado}" a "${newStatus}"?`)) {
+      const descripcion = this.getDescripcionCambioEstado(newStatus);
+      const success = this.shipmentsService.updateShipmentStatus(
+        this.shipmentId, 
+        newStatus, 
+        descripcion,
+        'Usuario'
+      );
       if (success) {
         // Recargar el envío para ver el cambio
         this.loadShipment();
-        alert('Estado actualizado correctamente');
+        alert(`✅ Estado actualizado a "${newStatus}"`);
+      } else {
+        alert('❌ Error al actualizar el estado');
       }
     }
+  }
+
+  /**
+   * Obtiene descripción para el cambio de estado
+   */
+  private getDescripcionCambioEstado(estado: ShipmentStatus): string {
+    const descripciones: Record<ShipmentStatus, string> = {
+      'En tránsito': 'Estado actualizado manualmente a En tránsito',
+      'En reparto': 'Paquete en proceso de reparto',
+      'Entregado': 'Paquete entregado al destinatario',
+      'En devolución': 'Paquete en proceso de devolución',
+      'Con reclamo': 'Reclamo registrado para este paquete',
+      'Cancelado': 'Envío cancelado',
+      'Recepcionado': 'Paquete recepcionado',
+      'En depósito': 'Paquete en depósito',
+      'Clasificado': 'Paquete clasificado'
+    };
+    return descripciones[estado] || `Estado cambiado a ${estado}`;
   }
 
   /**

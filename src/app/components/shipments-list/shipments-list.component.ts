@@ -67,8 +67,11 @@ export class ShipmentsListComponent implements OnInit {
       const text = this.searchText.toLowerCase();
       filtered = filtered.filter(s =>
         s.id.toLowerCase().includes(text) ||
+        s.codigoTrazabilidad.toLowerCase().includes(text) ||
         s.destinatario.toLowerCase().includes(text) ||
-        s.remitente.toLowerCase().includes(text)
+        s.remitente.toLowerCase().includes(text) ||
+        s.destino.toLowerCase().includes(text) ||
+        s.ciudad.toLowerCase().includes(text)
       );
     }
 

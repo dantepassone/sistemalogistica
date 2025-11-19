@@ -312,7 +312,10 @@ export class ShipmentsService {
   /**
    * Filtra envíos por estado
    */
-  filterByStatus(status: ShipmentStatus): Shipment[] {
+  filterByStatus(status: ShipmentStatus | 'Todos'): Shipment[] {
+    if (status === 'Todos') {
+      return this.shipments;
+    }
     return this.shipments.filter(s => s.estado === status);
   }
 
@@ -335,16 +338,6 @@ export class ShipmentsService {
   }
 
   /**
-   * Filtra envíos por estado
-   */
-  filterByStatus(status: ShipmentStatus | 'Todos'): Shipment[] {
-    if (status === 'Todos') {
-      return this.shipments;
-    }
-    return this.shipments.filter(s => s.estado === status);
-  }
-
-  /**
    * Busca envíos por texto (ID, remitente o destinatario)
    */
   searchShipments(searchText: string): Shipment[] {
@@ -360,17 +353,66 @@ export class ShipmentsService {
   }
 
   /**
-   * Actualiza el estado de un envío
+   * Actualiza el estado de un envío y agrega evento al historial
    */
-  updateShipmentStatus(id: string, newStatus: ShipmentStatus): boolean {
+  updateShipmentStatus(id: string, newStatus: ShipmentStatus, descripcion?: string, usuario?: string): boolean {
     const shipment = this.shipments.find(s => s.id === id);
     if (shipment) {
+      const estadoAnterior = shipment.estado;
       shipment.estado = newStatus;
+      
+      // Si se marca como Entregado, guardar fecha de entrega
+      if (newStatus === 'Entregado' && !shipment.fechaEntrega) {
+        shipment.fechaEntrega = new Date().toISOString().split('T')[0];
+      }
+      
+      // Agregar evento al historial de tracking
+      if (!shipment.historialTracking) {
+        shipment.historialTracking = [];
+      }
+      
+      const nuevoEvento = {
+        fecha: new Date().toISOString().split('T')[0],
+        hora: new Date().toTimeString().split(' ')[0],
+        estado: newStatus,
+        descripcion: descripcion || this.getDefaultDescription(newStatus, estadoAnterior),
+        usuario: usuario || 'Sistema'
+      };
+      
+      shipment.historialTracking.push(nuevoEvento);
+      
+      // Actualizar ubicación según el estado
+      if (newStatus === 'En tránsito' || newStatus === 'En reparto') {
+        shipment.ubicacionActual = shipment.vehiculoAsignado ? `En vehículo ${shipment.vehiculoAsignado}` : 'En ruta';
+      } else if (newStatus === 'En depósito') {
+        shipment.ubicacionActual = 'Depósito Central';
+      } else if (newStatus === 'Entregado') {
+        shipment.ubicacionActual = shipment.direccion;
+      }
+      
       // Notificar a los observadores del cambio
       this.shipmentsSubject.next([...this.shipments]);
       return true;
     }
     return false;
+  }
+
+  /**
+   * Obtiene descripción por defecto según el cambio de estado
+   */
+  private getDefaultDescription(nuevoEstado: ShipmentStatus, estadoAnterior: ShipmentStatus): string {
+    const descripciones: Record<ShipmentStatus, string> = {
+      'Recepcionado': 'Paquete recepcionado y registrado en el sistema',
+      'En depósito': 'Paquete almacenado en depósito',
+      'Clasificado': 'Paquete clasificado y listo para asignación',
+      'En tránsito': 'Paquete en tránsito hacia destino',
+      'En reparto': 'Paquete en proceso de reparto',
+      'Entregado': 'Paquete entregado exitosamente',
+      'En devolución': 'Paquete en proceso de devolución',
+      'Con reclamo': 'Reclamo registrado para este paquete',
+      'Cancelado': 'Envío cancelado'
+    };
+    return descripciones[nuevoEstado] || `Estado cambiado de ${estadoAnterior} a ${nuevoEstado}`;
   }
 
   /**

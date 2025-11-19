@@ -25,6 +25,8 @@ export class ClaimsComponent {
     prioridad: 'Media' as 'Baja' | 'Media' | 'Alta' | 'Urgente'
   };
 
+  constructor(private router: Router) {}
+
   claims: Claim[] = [
     {
       id: 'RCL-001',
